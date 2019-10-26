@@ -7,14 +7,27 @@ interface IContactProps {
 }
 
 const Contact: React.FC<IContactProps> = ({contact}) => {
+    // let shouldBeExpanded = false;
     let [isVisible, setVisibility] = useState(false);
+    let [isExpanded, setExpanded] = useState(false);
+
     const toggleDisplay = () => {
-        setVisibility(!isVisible);
+        if (!isExpanded) {
+            setVisibility(!isVisible);
+        }
+    };
+
+    const keepDetailsExpanded = () => {
+        setExpanded(isExpanded = true);
+        setVisibility(isVisible = true);
     };
 
     return (
         <div className="contact-card">
             <h1>{contact.name.first} {contact.name.last} </h1>
+            <br/>
+            <button onClick={keepDetailsExpanded}>Always show contact details</button>
+
             <img src={contact.picture.large} alt={`${contact.name.first} ${contact.name.last}`}
                  title={`${contact.name.first} ${contact.name.last}`} onMouseOver={toggleDisplay}
                  onMouseOut={toggleDisplay}/>
