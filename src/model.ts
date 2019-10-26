@@ -17,6 +17,7 @@ interface IPicture {
 }
 
 export interface IContact {
+    id: number,
     name: IName,
     phone: string,
     email: string,
