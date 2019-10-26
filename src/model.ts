@@ -23,5 +23,6 @@ export interface IContact {
     email: string,
     location: ILocation,
     picture: IPicture,
-    tags: string[]
+    tags: string[],
+    favourite: boolean
 }
