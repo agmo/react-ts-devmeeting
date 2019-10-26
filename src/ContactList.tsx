@@ -9,20 +9,32 @@ interface IContactListProps {
 }
 
 const ContactList: React.FC<IContactListProps> = ({header, contacts}) => {
-    let [name, filterContacts] = useState('');
-    const filterByName = (event: React.ChangeEvent<HTMLInputElement>) => {
-        filterContacts(event.target.value);
+    let [filter, setContactsFilter] = useState('');
+    const applyFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setContactsFilter(event.target.value.toLowerCase());
+    };
+
+    const contactMatchesFilter = (contact: IContact) => {
+        return contact.name.first.toLowerCase().includes(filter) ||
+            contact.name.last.toLowerCase().includes(filter) ||
+            contact.location.street.toLowerCase().includes(filter) ||
+            contact.location.city.toLowerCase().includes(filter) ||
+            contact.location.state.toLowerCase().includes(filter) ||
+            contact.location.postcode.toLowerCase().includes(filter) ||
+            contact.email.toLowerCase().includes(filter) ||
+            contact.tags.some(tag => tag.toLowerCase().includes(filter)) ||
+            contact.phone.toLowerCase().includes(filter);
     };
 
     return (
         <div>
             <h2>{header}</h2>
-            <p>Filter by last name (case insensitive):</p>
-            <input type="text" value={name} onChange={filterByName}/>
+            <p>Filter contacts:</p>
+            <input type="text" value={filter} onChange={applyFilter}/>
 
             {
                 contacts
-                    .filter(contact => contact.name.last.toLowerCase().includes(name.toLowerCase()))
+                    .filter(contactMatchesFilter)
                     .map((contact: IContact) => (
                     <Contact contact={contact} key={contact.id}/>
                 ))
