@@ -10,7 +10,8 @@ const contacts: IContact[] = [
         phone: '011-962-7516',
         email: 'brad.gibson@example.com',
         location: {street: '9278 new road', city: 'kilcoole', state: 'waterford', postcode: '93027'},
-        picture: {large: 'https://randomuser.me/api/portraits/men/75.jpg'}
+        picture: {large: 'https://randomuser.me/api/portraits/men/75.jpg'},
+        tags: ['IT', 'Cloud', 'expert', 'Docker']
     },
     {
         id: 1,
@@ -18,7 +19,8 @@ const contacts: IContact[] = [
         phone: '(850)-364-8448',
         email: 'deann.martin@example.com',
         location: {street: '8155 Preston Rd', city: 'kilcoole', state: 'waterford', postcode: '93027'},
-        picture: {large: 'https://randomuser.me/api/portraits/women/6.jpg'}
+        picture: {large: 'https://randomuser.me/api/portraits/women/6.jpg'},
+        tags: ['HR', 'expert', 'recruitment']
     }
 ];
 

@@ -5,6 +5,7 @@ import {IContact} from "./model";
 interface IContactProps {
     contact: IContact
 }
+
 const Contact: React.FC<IContactProps> = ({contact}) => {
     return (
         <div className="contact-card">
@@ -16,6 +17,12 @@ const Contact: React.FC<IContactProps> = ({contact}) => {
             <p>{contact.location.state}</p>
             <p>{contact.email}</p>
             <p>{contact.phone}</p>
+
+            {
+                contact.tags.map((tag: string) => (
+                    <span className="tag" key={tag}>{tag}</span>
+                ))
+            }
         </div>
     );
 };

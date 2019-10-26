@@ -22,5 +22,6 @@ export interface IContact {
     phone: string,
     email: string,
     location: ILocation,
-    picture: IPicture
+    picture: IPicture,
+    tags: string[]
 }

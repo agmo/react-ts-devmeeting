@@ -1,3 +1,8 @@
 .contact-card {
   text-align: center;
 }
+
+.tag {
+  margin-right: 8px;
+  color: orange;
+}
