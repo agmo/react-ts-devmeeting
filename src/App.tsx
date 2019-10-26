@@ -1,31 +1,7 @@
 import React from 'react';
 import './App.css';
-
-interface ILocation {
-    street: string,
-    city: string,
-    state: string,
-    postcode: string
-}
-
-interface IName {
-    first: string,
-    last: string
-}
-
-interface IPicture {
-    large?: string,
-    medium?: string,
-    thumbnail?: string
-}
-
-interface IContact {
-    name: IName,
-    phone: string,
-    email: string,
-    location: ILocation,
-    picture: IPicture
-}
+import Contact from "./Contact";
+import {IContact} from "./model";
 
 const contact: IContact = {
     name: {first: 'Brad', last: 'Gibson'},
@@ -38,16 +14,7 @@ const contact: IContact = {
 const App: React.FC = () => {
     return (
         <div className="App">
-            <div className="contact-card">
-                <h1>{contact.name.first} {contact.name.last}</h1>
-                <img src={contact.picture.large} alt={`${contact.name.first} ${contact.name.last}`}
-                     title={`${contact.name.first} ${contact.name.last}`}/>
-                <p>{contact.location.street}</p>
-                <p>{contact.location.city} {contact.location.postcode}</p>
-                <p>{contact.location.state}</p>
-                <p>{contact.email}</p>
-                <p>{contact.phone}</p>
-            </div>
+            <Contact contact={contact}/>
         </div>
     );
 };
